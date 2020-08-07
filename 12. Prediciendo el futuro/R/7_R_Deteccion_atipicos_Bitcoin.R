@@ -16,6 +16,7 @@
 
 #Instalando el paquete
 install.packages('anomalize')
+# otra manera de instalar el anomalize
 devtools::install_github("business-science/anomalize")
 install.packages('coindeskr')
 
@@ -28,10 +29,12 @@ library(coindeskr) #bitcoin price extraction from coindesk
 
 btc <- get_historic_price(start = "2017-01-01")
 
+# tibbles es como un df pero más moderno que te permite trabajar
+# de cierta manera. Lo usamos porque la función anomalize lo requiere 
 btc_ts <- btc %>% rownames_to_column() %>% as_tibble() %>% 
   mutate(date = as.Date(rowname)) %>% select(-one_of('rowname'))
 
-
+#stl: lo que hace es como un seasonal decompose
 btc_ts %>% 
   time_decompose(Price, method = "stl", frequency = "auto", trend = "auto") %>%
   anomalize(remainder, method = "gesd", alpha = 0.05, max_anoms = 0.2) %>% 
@@ -42,7 +45,6 @@ btc_ts %>%
 #The anomaly detection method. One of "iqr" or "gesd". 
 #The IQR method is faster at the expense of possibly not being quite as accurate. 
 #The GESD method has the best properties for outlier detection, but is loop-based and therefore a bit slower.
-
 
 btc_ts %>% 
   time_decompose(Price) %>%

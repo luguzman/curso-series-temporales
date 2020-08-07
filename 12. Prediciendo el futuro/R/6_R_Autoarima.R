@@ -40,5 +40,17 @@ arimafore$mean
 # Ultimas observaciones y forecast
 plot(arimafore, xlim = c(1930, 1944))
 
+############################### Tarea ########################
+# Obtén el valor del logaritmo de la verosimilitud (LL) y el AIC 
+# para el modelo AR(4) que estimamos con auto.arima.
+myarima = arima(lynx, order = c(4,0,0))
+myarima
 
+myarima=auto.arima(lynx, trace = T, 
+                   max.order = 8,
+                   max.p = 8,
+                   stepwise = F, 
+                   approximation = F)
 
+myarima = arima(lynx, order = c(8,0,0))
+myarima

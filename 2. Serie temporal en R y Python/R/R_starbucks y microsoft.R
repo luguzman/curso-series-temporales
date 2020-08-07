@@ -1,8 +1,14 @@
 #Importando datos de precios de cierre de Starbucks y Microsoft
 library(readr)
-sbux.df <- read_csv("A CURSO SERIES TEMPORALES (NUEVO)/Clases Nuevas/Starbuck/sbuxPrices.csv")
+sbux.df <- read_csv("sbuxPrices.csv")
 View(sbux.df)
 
+# Creamos la serie de tiempo para poder condierar la variable tiempo
+# frequency: hay que poner la cantidad periodo en un año, ie, si se busca
+# una frecuencia de 30 min => 60*24/30*365. Por otro lado al denotar
+# start tendríamos que estarle pasando el numero del intervalo en 
+# el año. Por ejemplo, el intervalo de 00:30 del 2 de enero 2019 sería
+# c(2019, 50) ya que un día tiene 48 intervalos de 30 min
 sbux.ts = ts(data=sbux.df$Adj.Close, frequency = 12,
              start=c(1993,3), end=c(2008,3))
 class(sbux.ts) 

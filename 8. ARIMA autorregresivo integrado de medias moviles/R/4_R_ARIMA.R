@@ -38,7 +38,7 @@ checkresiduals(myarima)
 ### ARIMA Forecast
 
 # Forecast de 10 años
-arimafore <- forecast(myarima, h = 10)
+arimafore <- forecast(myarima, h = 20)
 
 plot(arimafore)
 
