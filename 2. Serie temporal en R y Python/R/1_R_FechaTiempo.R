@@ -1,4 +1,4 @@
-### Librerías que necesitamos:
+### LibrerÃ­as que necesitamos:
 library(lubridate) 
 library(tseries)
 library(forecast)
@@ -6,19 +6,19 @@ library(forecast)
 
 
 
-### Opciones estándar en R base POSIXt: Portable Operating System Interface for Time (codificación estándar)
+### Opciones estÃ¡ndar en R base POSIXt: Portable Operating System Interface for Time (codificaciÃ¡n estÃ¡ndar)
 
-x = as.POSIXct("2019-12-25 11:45:34") # Número de segundos
+x = as.POSIXct("2019-12-25 11:45:34") # NÃºmero de segundos
 
 y = as.POSIXlt("2019-12-25 11:45:34")
 
-x; y # Se obtiene lo mismo, pero qué hay detrás de esto? 
+x; y # Se obtiene lo mismo, pero quÃ© hay detrÃ¡s de esto? 
 
 unclass(x)
 
 unclass(y)
 
-# Qué significa este número 1577270734?
+# QuÃ© significa este nÃºmero 1577270734?
 # Es la cantidad de segundos que hay hasta esa fecha, desde el punto de referencia 01-01-1970 00:00:00:
 
 # Time zone
@@ -35,9 +35,9 @@ x; class(x)
 
 unclass(x)
 
-50 * 365 - 5 # Numero de días desde 01-01-1970 (no considera los años bisiestos)
+50 * 365 - 5 # Numero de dï¿½as desde 01-01-1970 (no considera los aï¿½os bisiestos)
 
-### Otra forma: librería chron
+### Otra forma: librerï¿½a chron
 
 install.packages("chron")
 library(chron)
@@ -64,7 +64,7 @@ class(a)
 
 
 
-b = strptime(a, format = "%Y-%m-%d %H:%M") #format nos dice cómo se debe interpretar el texto
+b = strptime(a, format = "%Y-%m-%d %H:%M") #format nos dice cï¿½mo se debe interpretar el texto
 
 b; class(b)
 
@@ -113,14 +113,14 @@ mytimepoint
 
 
 
-## También se puede calcular el día de la semana que corresponde a nuestra fecha
+## Tambiï¿½n se puede calcular el dï¿½a de la semana que corresponde a nuestra fecha
 
 wday(mytimepoint)
 
 wday(mytimepoint, label=T, abbr=F) # los niveles que considera
 
 
-# Podemos ver en otra zona a qué fecha y hora corresponde
+# Podemos ver en otra zona a quï¿½ fecha y hora corresponde
 
 with_tz(mytimepoint, tz = "Europe/London")
 
