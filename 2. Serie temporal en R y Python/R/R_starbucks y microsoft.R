@@ -4,11 +4,11 @@ sbux.df <- read_csv("sbuxPrices.csv")
 View(sbux.df)
 
 # Creamos la serie de tiempo para poder condierar la variable tiempo
-# frequency: hay que poner la cantidad periodo en un año, ie, si se busca
+# frequency: hay que poner la cantidad periodo en un aï¿½o, ie, si se busca
 # una frecuencia de 30 min => 60*24/30*365. Por otro lado al denotar
-# start tendríamos que estarle pasando el numero del intervalo en 
-# el año. Por ejemplo, el intervalo de 00:30 del 2 de enero 2019 sería
-# c(2019, 50) ya que un día tiene 48 intervalos de 30 min
+# start tendrï¿½amos que estarle pasando el numero del intervalo en 
+# el aï¿½o. Por ejemplo, el intervalo de 00:30 del 2 de enero 2019 serï¿½a
+# c(2019, 50) ya que un dï¿½a tiene 48 intervalos de 30 min
 sbux.ts = ts(data=sbux.df$Adj.Close, frequency = 12,
              start=c(1993,3), end=c(2008,3))
 class(sbux.ts) 
@@ -55,11 +55,11 @@ plot(window(sbux.ts, start=c(2000,3), end=c(2008,3)),
 
 
 
-#Plot para múltiples columnas
-#En gráficos diferentes
+#Plot para mï¿½ltiples columnas
+#En grï¿½ficos diferentes
 plot(sbuxmsft.ts) 
 
-#En el mismo gráfico
+#En el mismo grï¿½fico
 plot(sbuxmsft.ts, plot.type="single",
       main="Monthly closing prices on SBUX and MSFT",
       ylab="Adjusted close price",
@@ -82,7 +82,7 @@ td2 = as.Date(sbux.df$Date, format="%m/%d/%Y")
 head(td2) 
 
 
-#Combinando el índice de tiempo a las dos series de precios
+#Combinando el ï¿½ndice de tiempo a las dos series de precios
 sbux.z = zoo(x=sbux.df$Adj.Close, order.by=td) 
 msft.z = zoo(x=msft.df$Adj.Close, order.by=td) 
 
@@ -101,7 +101,7 @@ end(sbux.z)
 #Ventaja de zoo: extraer subconjunto indexando con las fechas
 sbux.z[as.Date(c("2000/3/1", "2003/3/1"))]
 
-#window() también funciona
+#window() tambiï¿½n funciona
 window(sbux.z, start=as.Date("2000/3/1"), end=as.Date("2003/3/1")) 
 
 #Combinando dos series
@@ -156,7 +156,7 @@ legend(x="topleft", legend=c("SBUX","MSFT"), col=c("blue","red"),
 
 ###################################################################
 
-#Libería dygraphs
+#LiberÃ­a dygraphs
 install.packages("dygraphs")
 library(dygraphs)
 dygraph(SBUX.z, "Monthly closing prices of SBUX")
